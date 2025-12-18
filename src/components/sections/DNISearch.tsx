@@ -168,7 +168,7 @@ export function DNISearch() {
 
   const handleWhatsAppClick = () => {
     window.open(
-      "https://wa.me/?text=Solicitud%20de%20acceso%20al%20grupo%20PREMIUM",
+      "https://chat.whatsapp.com/L3tpUjgxvwz4du2H0kIrGr",
       "_blank",
     );
   };
