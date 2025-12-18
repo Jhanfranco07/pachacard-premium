@@ -60,7 +60,7 @@ export function Footer() {
                 Agencia C.P.R. Huertos de Manchay
               </p>
               <p>
-                Av. Malasquez con la Calle 36
+                Av. Victor Malásquez con la Calle 57
               </p>
               <p>
                 Área de Licencias y Desarrollo Económico

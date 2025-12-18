@@ -304,8 +304,8 @@ export function DNISearch() {
                       <div className="flex-1">
                         <h4 className="mb-2 text-[#7E1515]">Lugar de recojo</h4>
                         <p className="text-gray-600 text-sm mb-3">
-                          Agencia C.P.R. Huertos de Manchay – Av. Malasquez con la Calle 36,
-                          área de Licencias y Desarrollo Económico. Horario: lunes a viernes
+                          Agencia C.P.R. Huertos de Manchay – Av. Victor Malásquez con la Calle 57,
+                          Área de Licencias y Desarrollo Económico. Horario: lunes a viernes
                           8:00 a.m. a 5:00 p.m.
                         </p>
 

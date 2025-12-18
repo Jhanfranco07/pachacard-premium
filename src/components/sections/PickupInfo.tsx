@@ -9,7 +9,7 @@ interface PickupInfoProps {
 
 export function PickupInfo({ onConsultar }: PickupInfoProps) {
   const handleMapClick = () => {
-    window.open('https://www.google.com/maps/search/?api=1&query=Av.+Malasquez+con+Calle+36+Huertos+Manchay+Pachacamac', '_blank');
+    window.open('https://maps.app.goo.gl/wRXrfmhzJ1bGHpsa8', '_blank');
   };
 
   return (
@@ -47,7 +47,7 @@ export function PickupInfo({ onConsultar }: PickupInfoProps) {
               <div>
                 <h3 className="mb-2 text-[#7E1515]">Dirección</h3>
                 <p className="text-gray-600 text-sm">
-                  Av. Malasquez con la Calle 36, al área de Licencias y Desarrollo Económico
+                  Av. Victor Málasquez con la Calle 57, al área de Licencias y Desarrollo Económico
                 </p>
               </div>
             </div>
@@ -85,7 +85,7 @@ export function PickupInfo({ onConsultar }: PickupInfoProps) {
               <CreditCard className="w-5 h-5 text-[#7E1515] mt-1 flex-shrink-0" />
               <p className="text-gray-700 text-sm leading-relaxed">
                 Para recoger su tarjeta, por favor acérquese a la <strong>Agencia C.P.R. Huertos de Manchay</strong>, 
-                ubicada en: <strong>Av. Malasquez con la Calle 36</strong>, al área de <strong>Licencias y Desarrollo Económico</strong>, 
+                ubicada en: <strong>Av. Victor Malásquez con la Calle 57</strong>, al área de <strong>Licencias y Desarrollo Económico</strong>, 
                 para que podamos entregarle su tarjeta PACHACARD PREMIUM. Le recordamos llevar su <strong>DNI</strong> y mencionar 
                 el <strong>programa PACHACARD</strong> al momento de la atención. Le informamos que nuestro horario de 
                 atención es de <strong>lunes a viernes de 8:00 a.m. a 5:00 p.m.</strong>

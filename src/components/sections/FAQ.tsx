@@ -48,7 +48,7 @@ export function FAQ() {
                 <li>Necesitas regularizar algún pago pendiente</li>
               </ul>
               <p className="mt-2">
-                Te recomendamos acercarte a la Agencia C.P.R. Huertos de Manchay (Av. Malasquez con la Calle 36) 
+                Te recomendamos acercarte a la Agencia C.P.R. Huertos de Manchay (Av. Victor Malásquez con la Calle 57) 
                 en horario de atención (lunes a viernes de 8:00 a.m. a 5:00 p.m.) para verificar tu situación 
                 y recibir orientación personalizada.
               </p>
@@ -63,7 +63,7 @@ export function FAQ() {
               Puedes recoger tu tarjeta PACHACARD en:
               <div className="mt-3 bg-[#F1F5F9] rounded-lg p-4 space-y-2">
                 <p><strong>Lugar:</strong> Agencia C.P.R. Huertos de Manchay</p>
-                <p><strong>Dirección:</strong> Av. Malasquez con la Calle 36, área de Licencias y Desarrollo Económico</p>
+                <p><strong>Dirección:</strong> Av. Victor Malásquez con la Calle 57, Área de Licencias y Desarrollo Económico</p>
                 <p><strong>Horario:</strong> Lunes a viernes de 8:00 a.m. a 5:00 p.m.</p>
                 <p><strong>Requisitos:</strong> Traer tu DNI y mencionar el programa PACHACARD</p>
               </div>
