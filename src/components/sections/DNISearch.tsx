@@ -194,7 +194,7 @@ export function DNISearch() {
                 <Input
                   id="q-input"
                   type="text"
-                  placeholder="Ej: 1065 (código) o 01234567 (DNI) o 20123456789 (RUC)"
+                  placeholder="Ingresa tu código, dni o ruc"
                   value={query}
                   onChange={(e) => setQuery(e.target.value.replace(/\D/g, ""))}
                   className="flex-1 h-12 text-lg border-2 focus:border-[#7E1515] rounded-xl"
