@@ -1,3 +1,4 @@
+// src/components/sections/DNISearch.tsx
 import { useEffect, useMemo, useState } from "react";
 import Papa from "papaparse";
 
@@ -14,6 +15,7 @@ import {
   MessageCircle,
   AlertCircle,
   Loader2,
+  Info,
 } from "lucide-react";
 
 type Row = {
@@ -96,8 +98,8 @@ export function DNISearch() {
               impresos: (impresos === "SI"
                 ? "SI"
                 : impresos === "NO"
-                  ? "NO"
-                  : "") as "SI" | "NO" | "",
+                ? "NO"
+                : "") as "SI" | "NO" | "",
             };
           })
           .filter((r) => r.codigo || r.dni_ruc || r.nombre_completo);
@@ -159,18 +161,18 @@ export function DNISearch() {
     setSearchState(user.impresos === "SI" ? "found-ready" : "found-not-ready");
   };
 
-  const handleMapClick = () => {
-    window.open(
-      "https://maps.app.goo.gl/BQpUuWMbJxz5SM9A8",
-      "_blank",
-    );
+  // MAPS
+  const handleMapClickMain = () => {
+    window.open("https://maps.app.goo.gl/BQpUuWMbJxz5SM9A8", "_blank");
   };
 
+  const handleMapClickAlt = () => {
+    window.open("https://maps.app.goo.gl/smZfm9w6A7CCoVfy9", "_blank");
+  };
+
+  // WHATSAPP
   const handleWhatsAppClick = () => {
-    window.open(
-      "https://chat.whatsapp.com/L3tpUjgxvwz4du2H0kIrGr",
-      "_blank",
-    );
+    window.open("https://chat.whatsapp.com/L3tpUjgxvwz4du2H0kIrGr", "_blank");
   };
 
   return (
@@ -255,7 +257,7 @@ export function DNISearch() {
                     <Alert className="border-2 border-[#7E1515] bg-green-50 rounded-xl">
                       <CheckCircle className="h-5 w-5 text-green-600" />
                       <AlertDescription className="text-green-900">
-                         Tu PACHACARD PREMIUM está lista para recoger
+                        Tu PACHACARD PREMIUM está lista para recoger
                       </AlertDescription>
                     </Alert>
                   ) : (
@@ -267,6 +269,7 @@ export function DNISearch() {
                     </Alert>
                   )}
 
+                  {/* DATA CARD */}
                   <div className="bg-gradient-to-br from-[#FBBF24]/10 via-[#F1F5F9] to-[#FBBF24]/5 rounded-xl p-6 space-y-4 border-2 border-[#FBBF24]">
                     <div>
                       <p className="text-sm text-gray-600 mb-1">Nombre</p>
@@ -298,20 +301,20 @@ export function DNISearch() {
                     </div>
                   </div>
 
+                  {/* RECOJO: PRINCIPAL */}
                   <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
                     <div className="flex items-start gap-3">
                       <MapPin className="w-5 h-5 text-[#7E1515] mt-1 flex-shrink-0" />
                       <div className="flex-1">
-                        <h4 className="mb-2 text-[#7E1515]">Lugar de recojo</h4>
+                        <h4 className="mb-2 text-[#7E1515]">Lugar de recojo (principal)</h4>
                         <p className="text-gray-600 text-sm mb-3">
-                          Agencia C.P.R. Huertos de Manchay – Av. Victor Malásquez con la Calle 57,
-                          Área de Licencias y Desarrollo Económico. Horario: lunes a viernes
-                          8:00 a.m. a 5:00 p.m.
+                          Agencia C.P.R. Huertos de Manchay – Av. Víctor Malásquez con la Calle 57,
+                          Área de Licencias y Desarrollo Económico. Horario: lunes a viernes 8:00 a.m. a 5:00 p.m.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-3">
                           <Button
-                            onClick={handleMapClick}
+                            onClick={handleMapClickMain}
                             variant="outline"
                             className="border-[#7E1515] text-[#7E1515] hover:bg-[#7E1515] hover:text-white rounded-lg"
                           >
@@ -319,13 +322,50 @@ export function DNISearch() {
                             Abrir Google Maps
                           </Button>
 
+                          {/* WhatsApp solo si está LISTA (SI) */}
+                          {searchState === "found-ready" && (
+                            <Button
+                              onClick={handleWhatsAppClick}
+                              className="bg-[#25D366] hover:bg-[#1da851] text-white rounded-lg"
+                            >
+                              <MessageCircle className="w-4 h-4 mr-2" />
+                              WhatsApp PREMIUM
+                            </Button>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* RECOJO: ALTERNATIVO */}
+                  <div className="bg-gradient-to-br from-[#FBBF24]/10 to-[#F59E0B]/[0.06] border-2 border-[#FBBF24]/40 rounded-xl p-6">
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-5 h-5 text-[#92400E] mt-1 flex-shrink-0" />
+                      <div className="flex-1">
+                        <div className="flex flex-wrap items-center gap-2 mb-2">
+                          <h4 className="text-[#92400E]">Lugar de recojo (alternativo)</h4>
+                          <span className="text-xs px-2 py-1 rounded-full bg-[#FBBF24]/30 text-[#92400E] border border-[#FBBF24]/40">
+                            Previa coordinación
+                          </span>
+                        </div>
+
+                        <p className="text-gray-700 text-sm mb-3">
+                          Pasaje de los Incas (Jr. Paraíso), Pachacámac Cercado – Oficina de Licencias y Desarrollo Económico.
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-3">
                           <Button
-                            onClick={handleWhatsAppClick}
-                            className="bg-[#25D366] hover:bg-[#1da851] text-white rounded-lg"
+                            onClick={handleMapClickAlt}
+                            className="bg-[#92400E] hover:bg-[#7C350C] text-white rounded-lg"
                           >
-                            <MessageCircle className="w-4 h-4 mr-2" />
-                            WhatsApp PREMIUM
+                            <MapPin className="w-4 h-4 mr-2" />
+                            Abrir Google Maps (alternativo)
                           </Button>
+
+                          <div className="inline-flex items-center gap-2 text-sm text-gray-700 px-3 py-2 rounded-lg bg-white/70 border border-[#FBBF24]/30">
+                            <Info className="w-4 h-4 text-[#92400E]" />
+                            Si estás cerca al Cercado, podemos coordinar tu atención aquí.
+                          </div>
                         </div>
                       </div>
                     </div>
