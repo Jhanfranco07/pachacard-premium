@@ -1,7 +1,16 @@
 // src/app/components/PickupInfo.tsx
+import type { ReactNode } from "react";
 import { Card } from "../ui/card";
 import { Button } from "../ui/button";
-import { MapPin, Clock, FileText, CreditCard, Info } from "lucide-react";
+import {
+  MapPin,
+  Clock,
+  IdCard,
+  CreditCard,
+  Building2,
+  Briefcase,
+  Info,
+} from "lucide-react";
 
 interface PickupInfoProps {
   onConsultar: () => void;
@@ -19,112 +28,119 @@ export function PickupInfo({ onConsultar }: PickupInfoProps) {
   return (
     <section id="recojo" className="py-16 sm:py-20 bg-[#F1F5F9]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 sm:mb-12">
-          <h2 className="mb-3 sm:mb-4">¿Dónde recojo mi tarjeta?</h2>
+        <div className="text-center mb-12">
+          <h2 className="mb-4">¿Dónde recojo mi tarjeta?</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Toda la información que necesitas para retirar tu PACHACARD PREMIUM
           </p>
         </div>
 
-        {/* CARD PRINCIPAL */}
-        <Card className="p-5 sm:p-10 rounded-2xl shadow-xl border-2 border-[#7E1515] bg-white">
-          {/* Encabezado */}
-          <div className="flex items-start gap-3 sm:gap-4 mb-6">
-            <div className="w-11 h-11 sm:w-12 sm:h-12 bg-[#7E1515] rounded-xl flex items-center justify-center flex-shrink-0">
-              <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-            </div>
-            <div className="min-w-0">
-              <h3 className="text-[#7E1515] leading-tight">Punto principal de recojo</h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                Aquí se encuentran todas las tarjetas impresas y listas para entrega.
-              </p>
+        <Card className="p-6 sm:p-10 rounded-2xl shadow-xl border-2 border-[#7E1515] bg-white">
+          {/* ====== BLOQUE PRINCIPAL ====== */}
+          <PointHeader
+            tone="main"
+            title="Punto principal de recojo"
+            subtitle="Aquí se encuentran todas las tarjetas impresas y listas para entrega."
+          />
+
+          <div className="mt-5">
+            <InfoList
+              tone="main"
+              items={[
+                {
+                  icon: <Building2 className="w-5 h-5 text-white" />,
+                  title: "Lugar",
+                  value: "Agencia C.P.R. Huertos de Manchay",
+                },
+                {
+                  icon: <MapPin className="w-5 h-5 text-white" />,
+                  title: "Dirección exacta",
+                  value: "Av. Víctor Malásquez con la Calle 57",
+                },
+                {
+                  icon: <Briefcase className="w-5 h-5 text-white" />,
+                  title: "Área",
+                  value: "Licencias y Desarrollo Económico",
+                },
+                {
+                  icon: <Clock className="w-5 h-5 text-white" />,
+                  title: "Horario",
+                  value: "Lunes a viernes de 8:00 a.m. a 5:00 p.m.",
+                },
+                {
+                  icon: <IdCard className="w-5 h-5 text-white" />,
+                  title: "Requisitos",
+                  value: "Traer DNI y mencionar el programa PACHACARD",
+                },
+              ]}
+            />
+          </div>
+
+          {/* ====== BLOQUE ALTERNATIVO ====== */}
+          <div className="mt-8 sm:mt-10">
+            <PointHeader
+              tone="alt"
+              title="Punto alternativo (Pachacámac Cercado)"
+              subtitle="Solo con previa coordinación (si te queda más cerca al Cercado)."
+            />
+
+            <div className="mt-5">
+              <InfoList
+                tone="alt"
+                items={[
+                  {
+                    icon: <Building2 className="w-5 h-5 text-white" />,
+                    title: "Lugar",
+                    value:
+                      "Oficina de Licencias y Desarrollo Económico – Pachacámac Cercado",
+                  },
+                  {
+                    icon: <MapPin className="w-5 h-5 text-white" />,
+                    title: "Dirección exacta",
+                    value:
+                      "Pasaje de los Incas, Jr. Paraíso – Pachacámac Cercado",
+                  },
+                  {
+                    icon: <Briefcase className="w-5 h-5 text-white" />,
+                    title: "Área",
+                    value: "Licencias y Desarrollo Económico",
+                  },
+                  {
+                    icon: <Info className="w-5 h-5 text-white" />,
+                    title: "Condición",
+                    value:
+                      "Antes de ir, se coordina para trasladar tu tarjeta a este punto y entregártela cuando llegues.",
+                  },
+                ]}
+              />
             </div>
           </div>
 
-          {/* Mini-grid de info (mejor en móvil) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-8 mb-6 sm:mb-8">
-            {/* Lugar */}
-            <div className="rounded-xl border border-gray-200 p-4 sm:border-0 sm:p-0">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-[#7E1515] rounded-xl flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-[#7E1515] mb-1">Lugar</p>
-                  <p className="text-gray-700 text-sm sm:text-base">
-                    Agencia C.P.R. Huertos de Manchay
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Dirección */}
-            <div className="rounded-xl border border-gray-200 p-4 sm:border-0 sm:p-0">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-[#7E1515] rounded-xl flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-[#7E1515] mb-1">Dirección</p>
-                  <p className="text-gray-700 text-sm sm:text-base">
-                    Av. Víctor Malásquez con la Calle 57, área de Licencias y Desarrollo Económico
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Horario */}
-            <div className="rounded-xl border border-gray-200 p-4 sm:border-0 sm:p-0">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-[#7E1515] rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-[#7E1515] mb-1">Horario</p>
-                  <p className="text-gray-700 text-sm sm:text-base">
-                    Lunes a viernes de 8:00 a.m. a 5:00 p.m.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Requisitos */}
-            <div className="rounded-xl border border-gray-200 p-4 sm:border-0 sm:p-0">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-[#7E1515] rounded-xl flex items-center justify-center flex-shrink-0">
-                  <FileText className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-[#7E1515] mb-1">Requisitos</p>
-                  <p className="text-gray-700 text-sm sm:text-base">
-                    Traer DNI y mencionar el programa PACHACARD
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Mensaje general (compacto en móvil, normal en PC) */}
-          <div className="bg-[#F1F5F9] rounded-xl p-4 sm:p-6 mb-5 sm:mb-6">
+          {/* ====== MENSAJE GENERAL (UNO SOLO PARA TODO) ====== */}
+          <div className="mt-8 bg-[#F1F5F9] rounded-xl p-5 sm:p-6">
             <div className="flex items-start gap-3">
-              <CreditCard className="w-5 h-5 text-[#7E1515] mt-0.5 flex-shrink-0" />
-              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-                Para recoger su tarjeta, por favor acérquese a la{" "}
-                <strong>Agencia C.P.R. Huertos de Manchay</strong>, ubicada en{" "}
-                <strong>Av. Víctor Malásquez con la Calle 57</strong>, al área de{" "}
-                <strong>Licencias y Desarrollo Económico</strong>, para que podamos entregarle su{" "}
-                <strong>PACHACARD PREMIUM</strong>. Le recordamos llevar su <strong>DNI</strong> y
-                mencionar el <strong>programa PACHACARD</strong>. Horario:{" "}
-                <strong>lunes a viernes de 8:00 a.m. a 5:00 p.m.</strong>
+              <CreditCard className="w-5 h-5 text-[#7E1515] mt-1 flex-shrink-0" />
+              <p className="text-gray-700 text-sm leading-relaxed">
+                Para recoger su tarjeta, por favor acérquese al área de{" "}
+                <strong>Licencias y Desarrollo Económico</strong>. El punto principal de
+                atención es la <strong>Agencia C.P.R. Huertos de Manchay</strong> (Av.{" "}
+                <strong>Víctor Malásquez con la Calle 57</strong>). El horario de atención es de{" "}
+                <strong>lunes a viernes de 8:00 a.m. a 5:00 p.m.</strong>. Lleve su{" "}
+                <strong>DNI</strong> y mencione el <strong>programa PACHACARD</strong>.
+                <br />
+                <span className="text-gray-600">
+                  Si te queda más cerca el Cercado, puedes solicitar atención en el punto alternativo{" "}
+                  <strong>solo con previa coordinación</strong>.
+                </span>
               </p>
             </div>
           </div>
 
-          {/* Botones (móvil: apilados, pc: fila) */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+          {/* ====== BOTONES (mobile: apilados / pc: 2 columnas) ====== */}
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Button
               onClick={handleMapClickMain}
-              className="bg-[#7E1515] hover:bg-[#9A1E1E] rounded-xl flex-1"
+              className="bg-[#7E1515] hover:bg-[#9A1E1E] rounded-xl w-full"
               size="lg"
             >
               <MapPin className="w-5 h-5 mr-2" />
@@ -132,9 +148,19 @@ export function PickupInfo({ onConsultar }: PickupInfoProps) {
             </Button>
 
             <Button
+              onClick={handleMapClickAlt}
+              variant="outline"
+              className="border-2 border-[#7E1515] text-[#7E1515] hover:bg-[#7E1515] hover:text-white rounded-xl w-full"
+              size="lg"
+            >
+              <MapPin className="w-5 h-5 mr-2" />
+              Abrir ubicación (alternativa)
+            </Button>
+
+            <Button
               onClick={onConsultar}
               variant="outline"
-              className="border-2 border-[#7E1515] text-[#7E1515] hover:bg-[#7E1515] hover:text-white rounded-xl flex-1"
+              className="sm:col-span-2 border-2 border-gray-300 text-[#0F172A] hover:bg-gray-50 rounded-xl w-full"
               size="lg"
             >
               <CreditCard className="w-5 h-5 mr-2" />
@@ -142,62 +168,107 @@ export function PickupInfo({ onConsultar }: PickupInfoProps) {
             </Button>
           </div>
         </Card>
-
-        {/* CARD ALTERNATIVA (más compacta y bonita en móvil) */}
-        <div className="mt-6 bg-gradient-to-r from-[#FBBF24]/10 to-[#F59E0B]/10 border-2 border-[#FBBF24] rounded-2xl p-5 sm:p-6">
-          <div className="flex items-start gap-3 sm:gap-4">
-            <div className="w-11 h-11 sm:w-12 sm:h-12 bg-[#FBBF24] rounded-xl flex items-center justify-center flex-shrink-0">
-              <MapPin className="w-5 h-5 text-[#92400E]" />
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <div className="flex flex-wrap items-center gap-2">
-                <h4 className="text-[#92400E]">Punto alternativo</h4>
-                <span className="text-xs px-2 py-1 rounded-full bg-[#FBBF24]/40 text-[#92400E] border border-[#FBBF24]/50">
-                  Solo con previa coordinación
-                </span>
-              </div>
-
-              <p className="mt-2 text-gray-700 text-sm sm:text-base leading-relaxed">
-                Oficina de Licencias y Desarrollo Económico – <strong>Pachacámac Cercado</strong>.
-                Pasaje de los Incas (Jr. Paraíso), Pachacámac Cercado.
-              </p>
-
-              <div className="mt-3 flex flex-col sm:flex-row gap-3">
-                <Button
-                  onClick={handleMapClickAlt}
-                  className="bg-[#92400E] hover:bg-[#7C350C] text-white rounded-xl"
-                  size="lg"
-                >
-                  <MapPin className="w-5 h-5 mr-2" />
-                  Abrir ubicación (alternativa)
-                </Button>
-
-                <div className="inline-flex items-center gap-2 text-sm text-gray-700 px-3 py-3 sm:py-2 rounded-xl bg-white/70 border border-[#FBBF24]/40">
-                  <Info className="w-4 h-4 text-[#92400E]" />
-                  Si estás cerca al Cercado, podemos coordinar tu atención aquí.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Nota premium (igual) */}
-        <div className="mt-6 bg-gradient-to-r from-[#FBBF24]/10 to-[#F59E0B]/10 border-2 border-[#FBBF24] rounded-xl p-6">
-          <div className="flex items-start gap-3">
-            <div className="w-10 h-10 bg-[#FBBF24] rounded-lg flex items-center justify-center flex-shrink-0">
-              <span className="text-2xl">⭐</span>
-            </div>
-            <div>
-              <h4 className="mb-2 text-[#92400E]">Titulares PREMIUM</h4>
-              <p className="text-gray-700 text-sm">
-                Si tu tarjeta es PREMIUM, al recogerla recibirás instrucciones adicionales para unirte
-                al grupo oficial de WhatsApp y acceder a todos los beneficios exclusivos.
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
+  );
+}
+
+/* ===================== COMPONENTES UI ===================== */
+
+function PointHeader({
+  tone,
+  title,
+  subtitle,
+}: {
+  tone: "main" | "alt";
+  title: string;
+  subtitle: string;
+}) {
+  const isAlt = tone === "alt";
+
+  return (
+    <div className="flex items-start gap-3">
+      <div
+        className={[
+          "w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0",
+          isAlt ? "bg-[#92400E]" : "bg-[#7E1515]",
+        ].join(" ")}
+      >
+        <MapPin className="w-6 h-6 text-white" />
+      </div>
+
+      <div className="min-w-0">
+        <h3
+          className={[
+            "font-semibold leading-tight",
+            isAlt ? "text-[#92400E]" : "text-[#7E1515]",
+          ].join(" ")}
+        >
+          {title}
+        </h3>
+        <p className="text-sm text-gray-600">{subtitle}</p>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Lista responsive:
+ * - Mobile: filas compactas (menos scroll)
+ * - Desktop: grid 2 columnas (mantiene vista “normal”)
+ */
+function InfoList({
+  tone,
+  items,
+}: {
+  tone: "main" | "alt";
+  items: { icon: ReactNode; title: string; value: string }[];
+}) {
+  const isAlt = tone === "alt";
+  const iconBg = isAlt ? "bg-[#92400E]" : "bg-[#7E1515]";
+
+  return (
+    <div className="rounded-2xl border border-gray-200 bg-white overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        {items.map((it, idx) => (
+          <div
+            key={idx}
+            className={[
+              "flex gap-3 p-4 sm:p-5",
+              "border-t border-gray-200",
+              // Quita el borde superior del primero
+              idx === 0 ? "border-t-0" : "",
+              // En desktop, dibuja divisor vertical entre columnas
+              "md:border-t-0 md:border-r",
+              // En desktop, cada fila tiene 2 items, entonces el item de la derecha no lleva border-r
+              "md:[&:nth-child(2n)]:border-r-0",
+              // En desktop, separa filas (a partir del 3)
+              "md:[&:nth-child(n+3)]:border-t",
+            ].join(" ")}
+          >
+            <div
+              className={[
+                "w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center flex-shrink-0",
+                iconBg,
+              ].join(" ")}
+            >
+              {it.icon}
+            </div>
+
+            <div className="min-w-0">
+              <p
+                className={[
+                  "text-sm font-semibold mb-1",
+                  isAlt ? "text-[#92400E]" : "text-[#7E1515]",
+                ].join(" ")}
+              >
+                {it.title}
+              </p>
+              <p className="text-sm text-gray-700 leading-relaxed">{it.value}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

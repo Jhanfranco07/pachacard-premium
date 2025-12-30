@@ -214,7 +214,7 @@ export function DNISearch() {
                     id="q-input"
                     type="text"
                     inputMode="numeric"
-                    placeholder="Ej: 217791 (código) o DNI/RUC"
+                    placeholder="Ingresa tu código o DNI/RUC"
                     value={query}
                     onKeyDown={onKeyDown}
                     onChange={(e) => setQuery(e.target.value.replace(/\D/g, ""))}
@@ -418,7 +418,7 @@ export function DNISearch() {
                             className="bg-[#92400E] hover:bg-[#7C350C] text-white rounded-xl w-full"
                           >
                             <MapPin className="w-4 h-4 mr-2" />
-                            Abrir Google Maps (alternativo)
+                            Abrir Google Maps
                           </Button>
 
                           <div className="inline-flex items-start gap-2 text-sm text-gray-700 px-3 py-3 rounded-xl bg-white/70 border border-[#FBBF24]/30">
