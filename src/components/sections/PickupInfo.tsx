@@ -80,7 +80,7 @@ export function PickupInfo({ onConsultar }: PickupInfoProps) {
           <div className="mt-8 sm:mt-10">
             <PointHeader
               tone="alt"
-              title="Punto alternativo (Pachacámac Cercado)"
+              title="Punto alternativo"
               subtitle="Solo con previa coordinación (si te queda más cerca al Cercado)."
             />
 
@@ -92,7 +92,7 @@ export function PickupInfo({ onConsultar }: PickupInfoProps) {
                     icon: <Building2 className="w-5 h-5 text-white" />,
                     title: "Lugar",
                     value:
-                      "Oficina de Licencias y Desarrollo Económico – Pachacámac Cercado",
+                      "Oficina de Licencias y Desarrollo Económico",
                   },
                   {
                     icon: <MapPin className="w-5 h-5 text-white" />,
